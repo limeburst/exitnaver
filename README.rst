@@ -1,7 +1,7 @@
 blog2md
 -------
 
-blog2md exports your blog in markdown format.
+blog2md exports your blog in Markdown format.
 
 Usage
 `````

@@ -6,7 +6,7 @@ setup(
     author='Jihyeok Seo',
     author_email='me@limeburst.net',
     url='https://github.com/limeburst/blog2md',
-    description='Exports your blog in markdown format.',
+    description='Exports your blog in Markdown format.',
     long_description=open('README.rst').read(),
     classifiers=[
         'Development Status :: 4 - Beta',
