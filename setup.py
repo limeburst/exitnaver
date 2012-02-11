@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='blog2md',
-    version='0.1',
+    version='0.2',
     author='Jihyeok Seo',
     author_email='me@limeburst.net',
     url='https://github.com/limeburst/blog2md',

@@ -24,7 +24,12 @@ def naver(username):
     for pagenum in itertools.count(start=1):
         url = 'http://blog.naver.com/PostList.nhn?blogId={0}&currentPage={1}'.format(username, pagenum)
 
-        page = urllib2.urlopen(url)
+        try:
+            page = urllib2.urlopen(url)
+        except urllib2.HTTPError:
+            print "User or blog not found."
+            return False
+
         soup = BeautifulSoup(page)
 
         posts = soup.findAll(id=postnum)
@@ -58,7 +63,7 @@ def naver(username):
                     pass
 
             # Save post
-            content = unicode(postsoup)
+            content = unicode(postsoup).replace("&nbsp;", "")
             content = html2text(content)
             f = open(os.path.join(archive, filename), 'w')
             f.write("Title: {0}\n".format(title))

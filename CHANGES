@@ -3,6 +3,12 @@ blog2md Changelog
 
 Logging changes between PyPI blog2md releases.
 
+Version 0.2
+-----------
+
+- Optimizations for ouput of Naver blogs
+- Number of bug fixes
+
 Version 0.1
 -----------
 
