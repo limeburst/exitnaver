@@ -12,18 +12,13 @@ from HTMLParser import HTMLParser
 from time import strftime, strptime
 
 def naver(username):
-    try:
-        os.mkdir(username)
-    except OSError:
-        print "Directory {0} already exists. Please remove the directory first.".format(username)
-        return False
+    if not make_room(username): return False
 
     postnum = re.compile('post_\d*')
     postid = re.compile('post-view*')
 
     for pagenum in itertools.count(start=1):
         url = 'http://blog.naver.com/PostList.nhn?blogId={0}&currentPage={1}'.format(username, pagenum)
-
         try:
             page = urllib2.urlopen(url)
         except urllib2.HTTPError:
@@ -31,12 +26,11 @@ def naver(username):
             return False
 
         soup = BeautifulSoup(page)
-
         posts = soup.findAll(id=postnum)
         for post in posts:
             try:
                 h = HTMLParser()
-                title = h.unescape(post.span.text).encode('utf-8') #str
+                title = h.unescape(post.span.text).encode('utf-8')
             except:
                 continue
 
@@ -55,9 +49,8 @@ def naver(username):
                 try:
                     if 'postfiles' in img['src']:
                         imagefile = urllib2.unquote(os.path.basename(img['src'][:-8]))
-                        image = open(os.path.join(archive, imagefile), 'w')
-                        image.write(urllib2.urlopen(img['src']).read())
-                        image.close()
+                        with open(os.path.join(archive, imagefile), 'w') as image:
+                            image.write(urllib2.urlopen(img['src']).read())
                         img['src'] = imagefile
                 except:
                     pass
@@ -65,12 +58,21 @@ def naver(username):
             # Save post
             content = unicode(postsoup).replace("&nbsp;", "")
             content = html2text(content)
-            f = open(os.path.join(archive, filename), 'w')
-            f.write("Title: {0}\n".format(title))
-            f.write("Time: {0}\n\n".format(strftime("%H:%M:00", date)))
-            f.write(content.encode('utf-8'))
-            f.close()
+            with open(os.path.join(archive, filename), 'w') as f:
+                f.write("Title: {0}\n".format(title))
+                f.write("Time: {0}\n\n".format(strftime("%H:%M:00", date)))
+                f.write(content.encode('utf-8'))
             print filename
+
+    return True
+
+def make_room(username):
+    try:
+        os.mkdir(username)
+        return True
+    except OSError:
+        print "Directory {0} already exists. Please remove the directory first.".format(username)
+        return False
 
 def main(service, username):
     try:
