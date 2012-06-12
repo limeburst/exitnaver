@@ -1,5 +1,5 @@
 exitnaver
--------
+---------
 
 exitnaver exports your Naver blog in Markdown format.
 
