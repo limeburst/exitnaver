@@ -21,5 +21,5 @@ Links
 `````
 
 * `GitHub <http://github.com/limeburst/exitnaver>`_
-* `PyPI <http://pypi.python.org/exitnaver>`_
+* `PyPI <http://pypi.python.org/pypi/exitnaver>`_
 * `Author <http://limeburst.net/>`_
