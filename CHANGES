@@ -1,16 +1,15 @@
-blog2md Changelog
+exitnaver Changelog
 =================
 
-Logging changes between PyPI blog2md releases.
+Logging changes between PyPI exitnaver releases.
 
 Version 0.2
 -----------
 
-- Optimizations for ouput of Naver blogs
+- Output optimization
 - Number of bug fixes
 
 Version 0.1
 -----------
 
 - Initial public release
-- Support for Naver blogs

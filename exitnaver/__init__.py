@@ -11,7 +11,15 @@ from html2text import html2text
 from HTMLParser import HTMLParser
 from time import strftime, strptime
 
-def naver(username):
+def make_room(username):
+    try:
+        os.mkdir(username)
+        return True
+    except OSError:
+        print "Directory {0} already exists. Please remove the directory first.".format(username)
+        return False
+
+def main(username):
     if not make_room(username): return False
 
     postnum = re.compile('post_\d*')
@@ -65,17 +73,3 @@ def naver(username):
             print filename
 
     return True
-
-def make_room(username):
-    try:
-        os.mkdir(username)
-        return True
-    except OSError:
-        print "Directory {0} already exists. Please remove the directory first.".format(username)
-        return False
-
-def main(service, username):
-    try:
-        eval(service)(username)
-    except NameError:
-        print "Platform '{0}' not supported.".format(sys.argv[1])

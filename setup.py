@@ -1,12 +1,12 @@
 from setuptools import setup
 
 setup(
-    name='blog2md',
+    name='exitnaver',
     version='0.2',
     author='Jihyeok Seo',
     author_email='me@limeburst.net',
-    url='https://github.com/limeburst/blog2md',
-    description='Exports your blog in Markdown format.',
+    url='https://github.com/limeburst/exitnaver',
+    description='Exports your Naver blog in Markdown format.',
     long_description=open('README.rst').read(),
     classifiers=[
         'Development Status :: 4 - Beta',
@@ -17,7 +17,7 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules'
     ],
     license='GPL',
-    packages=['blog2md'],
+    packages=['exitnaver'],
     install_requires=['html2text', 'BeautifulSoup'],
-    scripts=['bin/blog2md']
+    scripts=['bin/exitnaver']
 )
