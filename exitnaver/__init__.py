@@ -3,13 +3,14 @@
 import itertools
 import os
 import re
-import sys
 import urllib2
 
 from BeautifulSoup import BeautifulSoup
 from html2text import html2text
 from HTMLParser import HTMLParser
-from time import strftime, strptime
+from time import strftime
+from dateutil.parser import parse
+
 
 def make_room(username):
     try:
@@ -19,8 +20,10 @@ def make_room(username):
         print "Directory {0} already exists. Please remove the directory first.".format(username)
         return False
 
+
 def main(username):
-    if not make_room(username): return False
+    if not make_room(username):
+        return False
 
     postnum = re.compile('post_\d*')
     postid = re.compile('post-view*')
@@ -42,7 +45,7 @@ def main(username):
             except:
                 continue
 
-            date = strptime(post.p.text, "%Y/%m/%d %H:%M")
+            date = parse(post.p.text).timetuple()
             filename = "{0}-{1}.md".format(strftime("%Y-%m-%d", date), title).replace('/', '.')
 
             archive = os.path.join(username, strftime("%Y-%m", date))
