@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import codecs
 import itertools
 import os
 import re
@@ -41,12 +42,13 @@ def main(username):
         for post in posts:
             try:
                 h = HTMLParser()
-                title = h.unescape(post.span.text).encode('utf-8')
+                title = h.unescape(post.span.text)
+                title = "".join(x for x in title if x.isalnum() or x.isspace())
             except:
                 continue
 
             date = parse(post.p.text).timetuple()
-            filename = "{0}-{1}.md".format(strftime("%Y-%m-%d", date), title).replace('/', '.')
+            filename = u"{0}-{1}.md".format(strftime("%Y-%m-%d", date), title)
 
             archive = os.path.join(username, strftime("%Y-%m", date))
             if not os.path.exists(archive):
@@ -69,10 +71,10 @@ def main(username):
             # Save post
             content = unicode(postsoup).replace("&nbsp;", "")
             content = html2text(content)
-            with open(os.path.join(archive, filename), 'w') as f:
-                f.write("Title: {0}\n".format(title))
-                f.write("Time: {0}\n\n".format(strftime("%H:%M:00", date)))
-                f.write(content.encode('utf-8'))
+            with codecs.open(os.path.join(archive, filename), encoding='utf-8-sig', mode='w') as f:
+                f.write(u"Title: {0}\n".format(title))
+                f.write(u"Time: {0}\n\n".format(strftime("%H:%M:00", date)))
+                f.write(content)
             print filename
 
     return True
