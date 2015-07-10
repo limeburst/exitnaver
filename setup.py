@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='exitnaver',
-    version='0.2.1',
+    version='0.2.2',
     author='Jihyeok Seo',
     author_email='me@limeburst.net',
     url='https://github.com/limeburst/exitnaver',
