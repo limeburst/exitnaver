@@ -10,6 +10,7 @@ from BeautifulSoup import BeautifulSoup
 from html2text import html2text
 from HTMLParser import HTMLParser
 from time import strftime, strptime
+from dateutil.parser import parse
 
 def make_room(username):
     try:
@@ -42,7 +43,7 @@ def main(username):
             except:
                 continue
 
-            date = strptime(post.p.text, "%Y/%m/%d %H:%M")
+            date = parse(post.p.text).timetuple()
             filename = "{0}-{1}.md".format(strftime("%Y-%m-%d", date), title).replace('/', '.')
 
             archive = os.path.join(username, strftime("%Y-%m", date))

@@ -18,6 +18,6 @@ setup(
     ],
     license='GPL',
     packages=['exitnaver'],
-    install_requires=['html2text', 'BeautifulSoup'],
+    install_requires=['html2text', 'BeautifulSoup', 'python-dateutil'],
     scripts=['bin/exitnaver']
 )
