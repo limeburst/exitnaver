@@ -84,6 +84,7 @@ def main(username):
                     pass
 
             # Save post
+            content = postsoup.prettify()
             content = html2text(content)
             with codecs.open(os.path.join(archive, filename), encoding='utf-8-sig', mode='w') as f:
                 f.write("Title: {0}\n".format(title))
