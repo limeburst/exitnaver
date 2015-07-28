@@ -8,4 +8,4 @@ miniman = """exitnaver: Usage: exitnaver username"""
 if len(sys.argv) == 2:
     main(sys.argv[1])
 else:
-    print miniman
+    print(miniman)
