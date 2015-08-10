@@ -51,7 +51,7 @@ def main(username):
             print("User or blog not found.")
             return False
 
-        soup = BeautifulSoup(page.text)
+        soup = BeautifulSoup(page.text, 'html.parser')
         posts = soup.findAll(id=postnum)
         for post in posts:
             try:
