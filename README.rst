@@ -29,14 +29,14 @@ Logging changes between PyPI exitnaver releases.
 Version 0.2.2
 `````````````
 
-Bugfix release. Fixed encoding issue in Windows, thanks to @lqez!
+Bugfix release. Fixed encoding issue in Windows, thanks to [@lqez](https://github.com/lqez)!
 
 Released on July 11, 2015.
 
 Version 0.2.1
 `````````````
 
-Bugfix release. Thanks to @lqez! Released on July 10, 2015.
+Bugfix release. Thanks to [@lqez](https://github.com/lqez)! Released on July 10, 2015.
 
 Version 0.2
 ```````````
