@@ -26,6 +26,11 @@ Changelog
 
 Logging changes between PyPI exitnaver releases.
 
+Version 0.3.0
+`````````````
+
+Python 3 support, thanks to `@youngminz <https://github.com/youngminz>`_!
+
 Version 0.2.2
 `````````````
 
