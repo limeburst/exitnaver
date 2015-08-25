@@ -1,6 +1,10 @@
 exitnaver
 =========
 
+.. image:: https://badge.fury.io/py/exitnaver.svg?
+   :target: https://pypi.python.org/pypi/exitnaver
+   :alt: Latest PyPI version
+
 exitnaver exports your Naver blog in Markdown format.
 
 Installation
